@@ -22,7 +22,7 @@ router.get('/', validateSession, (req, res) => {
         }
     })
     .then(r => res.status(200).json(r))
-    .then(err => res.status(500).json({error: err}))
+    .catch(err => res.status(500).json({error: err}))
 })
 // this id is not for the user but for the specific log attached to the user 
 router.get('/:id', (req, res) => {
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
         }
     })
     .then(result => res.status(200).json(result))
-    .then(err => res.status(500).json({ error: err }))
+    .catch(err => res.status(500).json({ error: err })) 
 })
 
 router.put('/:id', validateSession, (req, res) => {
@@ -40,7 +40,7 @@ router.put('/:id', validateSession, (req, res) => {
         where: { id: req.params.id }
     }) 
     .then(r => res.status(200).json(r))
-    .then(err => res.status(500).json({ error: err }))
+    .catch(err => res.status(500).json({ error: err }))
 })
 
 router.delete('/:id', validateSession, async (req, res) => {
@@ -55,3 +55,4 @@ router.delete('/:id', validateSession, async (req, res) => {
 })
 
 module.exports = router; 
+
