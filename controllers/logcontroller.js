@@ -22,7 +22,7 @@ router.get('/', validateSession, (req, res) => {
         }
     })
     .then(r => res.status(200).json(r))
-    .catch(err => res.status(500).json({error: err}))
+    .catch(err => res.status(500).json({error: err})) // needs to be a .catch because we only want to send one json response 
 })
 // this id is not for the user but for the specific log attached to the user 
 router.get('/:id', (req, res) => {
@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
     .then(result => res.status(200).json(result))
     .catch(err => res.status(500).json({ error: err })) 
 })
-
+                
 router.put('/:id', validateSession, (req, res) => {
     Log.update(req.body, {
         where: { id: req.params.id }

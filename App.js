@@ -20,6 +20,8 @@ const database = require('./Db');
 
 database.sync(); 
 
+app.use(require('./middleware/headers'));
+
 const user= require('./controllers/usercontroller');
 app.use('/user', user); 
 
