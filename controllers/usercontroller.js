@@ -44,10 +44,5 @@ router.post('/signin', (req, res) => {
         .catch(err => res.status(500).json({error: 'database error'}))
 })
 
-
-
-
-
-
 module.exports = router; 
 
